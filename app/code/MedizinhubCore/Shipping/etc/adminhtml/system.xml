@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers">
+            <group id="medizinhubshipping" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Medizinhub Shipping</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                </field>
+                <field id="name" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Method Name</label>
+                </field>
+                <field id="default_rate" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Default Shipping Rate</label>
+                    <comment>Applied to states not specified in any other category</comment>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="special_pincode" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Special Pincodes (comma-separated)</label>
+                    <comment>Enter special pincodes separated by commas (e.g., 600044,600045)</comment>
+                </field>
+                <field id="special_pincode_rate" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Special Pincode Rate (Below Min Order Amount)</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="special_pincode_threshold" translate="label" type="text" sortOrder="75" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Special Pincode Threshold Amount</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="special_pincode_above_rate" translate="label" type="text" sortOrder="76" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Special Pincode Rate (Above Threshold Amount)</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="tn_default_rate" translate="label" type="text" sortOrder="78" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Tamil Nadu Normal Delivery Rate</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="tn_rate_tier1" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Tamil Nadu - Tier 1 Rate (0 - 500)</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="tn_rate_tier2" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Tamil Nadu - Tier 2 Rate (501 - 1000)</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="tn_rate_tier3" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Tamil Nadu - Tier 3 Rate (1001 - 1500)</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="tn_tier1_max" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Tamil Nadu - Tier 1 Maximum Amount</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="tn_tier2_max" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Tamil Nadu - Tier 2 Maximum Amount</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="tn_tier3_max" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Tamil Nadu - Tier 3 Maximum Amount</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="border_states" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Border States (comma-separated)</label>
+                    <comment>Enter border state codes separated by commas (e.g., KA,KL,AP)</comment>
+                </field>
+                <field id="border_state_rate" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Border States Normal Delivery Rate</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="other_states" translate="label" type="text" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Other States (comma-separated)</label>
+                    <comment>Enter other state codes separated by commas (e.g., MH,DL,GJ)</comment>
+                </field>
+                <field id="other_states_rate" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Other States Normal Delivery Rate</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
