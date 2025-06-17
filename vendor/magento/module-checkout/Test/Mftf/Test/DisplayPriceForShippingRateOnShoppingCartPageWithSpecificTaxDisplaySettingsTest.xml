@@ -11,9 +11,9 @@
     <test name="DisplayPriceForShippingRateOnShoppingCartPageWithSpecificTaxDisplaySettingsTest">
         <annotations>
             <features value="Checkout"/>
-            <stories value="Display price for shipping rate on My Cart page according to setting Shipping Price = Including Tax with specific tax display settings"/>
-            <title value="Display price for shipping rate on My Cart page with specific tax display settings"/>
-            <description value="Admin can set specific configuration tax display setting for shipping method on My Cart page"/>
+            <stories value="Display price for shipping rate on Shopping Cart page according to setting Shipping Price = Including Tax with specific tax display settings"/>
+            <title value="Display price for shipping rate on Shopping Cart page with specific tax display settings"/>
+            <description value="Admin can set specific configuration tax display setting for shipping method on Shopping Cart page"/>
             <severity value="MAJOR"/>
             <testCaseId value="AC-4977"/>
         </annotations>
@@ -105,7 +105,7 @@
             <!-- Assert tax and flatRate amount -->
             <see selector="{{CheckoutCartSummarySection.shippingPrice}}" userInput="$4.17" stepKey="assertFlatRate"/>
             <see selector="{{CheckoutCartSummarySection.taxAmount}}" userInput="$2.50" stepKey="assertTaxAmount"/>
-            <!--Assert My Cart Summary-->
+            <!--Assert Shopping Cart Summary-->
             <actionGroup ref="AssertStorefrontShoppingCartSummaryWithShippingActionGroup" stepKey="AssertCartSummary" >
                <argument name="subtotal" value="$8.33"/>
                <argument name="shipping" value="$4.17"/>

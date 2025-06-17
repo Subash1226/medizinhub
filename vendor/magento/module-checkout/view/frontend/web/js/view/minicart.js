@@ -68,7 +68,7 @@ define([
                 'qty': ':input.cart-item-qty',
                 'button': ':button.update-cart-item'
             },
-            'confirmMessage': $.mage.__('Are you sure you would like to remove this item from the cart?')
+            'confirmMessage': $.mage.__('Are you sure you would like to remove this item from the shopping cart?')
         });
     }
 
@@ -120,9 +120,8 @@ define([
          * Close mini shopping cart.
          */
         closeMinicart: function () {
-
-    $('[data-block="minicart"]').find('[data-role="dropdownDialog"]').dropdownDialog('close');
-},
+            $('[data-block="minicart"]').find('[data-role="dropdownDialog"]').dropdownDialog('close');
+        },
 
         /**
          * @param {String} productType

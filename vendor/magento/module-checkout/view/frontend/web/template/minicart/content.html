@@ -1,10 +1,17 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
 <div class="block-title">
     <strong>
-        <span class="text" translate="''"></span>
-        <span class="qty empty"
-              text="getCartParam('summary_count')"
-              data-bind="css: { empty: !!getCartParam('summary_count') == false },
-                         attr: { title: $t('Items in Cart') }">
+        <span class="text" translate="'My Cart'"></span>
+        <span
+            class="qty empty"
+            text="getCartParam('summary_count')"
+            data-bind="css: { empty: !!getCartParam('summary_count') == false },
+                       attr: { title: $t('Items in Cart') }">
         </span>
     </strong>
 </div>
@@ -14,27 +21,52 @@
             id="btn-minicart-close"
             class="action close"
             data-action="close"
-            data-bind="attr: {
-                            title: $t('Close')
-                       },
-                       click: closeMinicart">
+            data-bind="
+                attr: {
+                    title: $t('Close')
+                },
+                click: closeMinicart()
+            ">
         <span translate="'Close'"></span>
     </button>
 
-    <!-- Show order summary and recently added items only if there are items in the cart -->
-    <if args="getCartParam('summary_count') > 0">
-        <div class="row">
-            <div class="col-md-8">
-                <p style="color: #313739;font-family: Source Sans Pro;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;">Order Summary</p>
-            </div>
-            <div class="col-md-4">
-                <div class="items-total">
-                    <span style="color: #313739;font-family:Source Sans Pro;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;" class="count" data-bind="text: getCartParam('summary_count').toLocaleString(window.LOCALE)"></span>
-                    <span style="color: #313739;font-family:Source Sans Pro;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;"> Item(s)</span>
-                </div>
-            </div>
+    <if args="getCartParam('summary_count')">
+        <div class="items-total">
+            <span class="count" if="maxItemsToDisplay < getCartLineItemsCount()" text="maxItemsToDisplay"></span>
+            <translate args="'of'" if="maxItemsToDisplay < getCartLineItemsCount()"></translate>
+            <span class="count" text="getCartParam('summary_count').toLocaleString(window.LOCALE)"></span>
+                <!-- ko if: (getCartParam('summary_count') > 1) -->
+                    <span translate="'Items in Cart'"></span>
+                <!--/ko-->
+                <!-- ko if: (getCartParam('summary_count') <= 1) -->
+                    <span translate="'Item in Cart'"></span>
+                <!--/ko-->
         </div>
 
+        <each args="getRegion('subtotalContainer')" render=""></each>
+        <each args="getRegion('extraInfo')" render=""></each>
+
+        <div class="actions" if="getCartParam('possible_onepage_checkout')">
+            <div class="primary">
+                <button
+                        id="top-cart-btn-checkout"
+                        type="button"
+                        class="action primary checkout"
+                        data-action="close"
+                        data-bind="
+                            attr: {
+                                title: $t('Proceed to Checkout')
+                            },
+                            click: closeMinicart()
+                        "
+                        translate="'Proceed to Checkout'">
+                </button>
+                <div data-bind="html: getCartParamUnsanitizedHtml('extra_actions')"></div>
+            </div>
+        </div>
+    </if>
+
+    <if args="getCartParam('summary_count')">
         <strong class="subtitle" translate="'Recently added item(s)'"></strong>
         <div data-action="scroll" class="minicart-items-wrapper">
             <ol id="mini-cart" class="minicart-items" data-bind="foreach: { data: getCartItems(), as: 'item' }">
@@ -42,17 +74,11 @@
                       render="{name: getTemplate(), data: item, afterRender: function() {$parents[1].initSidebar()}}"></each>
             </ol>
         </div>
-
-        <!-- Show Proceed To Cart button -->
-        <a href="checkout/cart" class="customer-register-link">
-            <button onclick="UserLoginCart()" id="checkout-cart-btn">Proceed To Cart</button>
-        </a>
     </if>
 
-    <!-- Show this if there are no items in the cart -->
     <ifnot args="getCartParam('summary_count')">
         <strong class="subtitle empty"
-                translate="'You have no items in your cart.'"></strong>
+                translate="'You have no items in your shopping cart.'"></strong>
         <if args="getCartParam('cart_empty_message')">
             <p class="minicart empty text" text="getCartParam('cart_empty_message')"></p>
             <div class="actions">
@@ -65,67 +91,16 @@
         </if>
     </ifnot>
 
+    <div class="actions" if="getCartParam('summary_count')">
+        <div class="secondary">
+            <a class="action viewcart" data-bind="attr: {href: shoppingCartUrl}">
+                <span translate="'View and Edit Cart'"></span>
+            </a>
+        </div>
+    </div>
+
     <div id="minicart-widgets" class="minicart-widgets" if="regionHasElements('promotion')">
         <each args="getRegion('promotion')" render=""></each>
     </div>
 </div>
-
 <each args="getRegion('sign-in-popup')" render=""></each>
-
-<style>
-    .minicart-items .product-item:not(:first-child) {
-        border-top:none !important;
-    }
-    .minicart-items-wrapper {
-        border:none !important;
-    }
-    .minicart-wrapper .block-minicart {
-        background: #E7F5FD;
-        border-radius: 8px;
-    }
-    .minicart-items .product-item {
-        padding: 0 !important;
-    }
-    .minicart-wrapper .product-image-container {
-        display: none !important;
-    }
-    .minicart-wrapper .price-container {
-        display: none !important;
-    }
-
-    #checkout-cart-btn{
-	border-radius: 8px;
-	background: linear-gradient(92deg, #03C777 11.69%, #01A462 102.33%);
-	width: 331px;
-	height: 52px;
-	color: #FFF;
-	font-family: "Source Sans Pro";
-	font-size: 18px;
-    margin-bottom: -21px;
-}
-    .row {
-        display: flex;
-  flex-wrap: wrap;
-};
-.minicart-items-wrapper {
-	padding: 10px 13px !important;
-}
-    .col-md-10 {
-        flex: 0 0 83.33333%;
-        max-width: 83.33333%;
-    }
-
-    .col-md-2 {
-        flex: 0 0 16.66667%;
-        max-width: 16.66667%;
-    }
-    .col-md-8 {
-        flex: 0 0 66.66667%;
-        max-width: 66.66667%;
-    }
-
-    .col-md-4 {
-        flex: 0 0 33.33333%;
-        max-width: 33.33333%;
-    }
-</style>

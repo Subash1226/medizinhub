@@ -33,12 +33,7 @@ class Index extends \Magento\Checkout\Controller\Onepage implements HttpGetActio
         }
 
         if (!$this->_customerSession->isLoggedIn() && !$checkoutHelper->isAllowedGuestCheckout($quote)) {
-          ?>  <script>
-            var linkRegister = document.createElement('a');
-            linkRegister.className = 'customer-register-link';
-            document.body.appendChild(linkRegister);
-            linkRegister.click();
-          </script><?php
+            $this->messageManager->addErrorMessage(__('Guest checkout is disabled.'));
             return $this->resultRedirectFactory->create()->setPath('checkout/cart');
         }
 

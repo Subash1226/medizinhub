@@ -10,7 +10,7 @@
               xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
     <actionGroup name="ApplyCartRuleOnStorefrontActionGroup">
         <annotations>
-            <description>Clicks on Add to Cart on a Storefront Product page. Validates that the Success Message is present and correct. Goes to the Storefront My Cart page. Applies the provided Coupon Code to the My Cart.</description>
+            <description>Clicks on Add to Cart on a Storefront Product page. Validates that the Success Message is present and correct. Goes to the Storefront Shopping Cart page. Applies the provided Coupon Code to the Shopping Cart.</description>
         </annotations>
         <arguments>
             <argument name="product"/>

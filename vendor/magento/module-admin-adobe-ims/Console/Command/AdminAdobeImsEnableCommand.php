@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright 2022 Adobe
+ * All Rights Reserved.
  */
 
 declare(strict_types=1);
@@ -164,7 +164,7 @@ class AdminAdobeImsEnableCommand extends Command
             if ($clientId && $clientSecret && $organizationId && $isTwoFactorAuthEnabled) {
                 $enabled = $this->enableModule($clientId, $clientSecret, $organizationId, $isTwoFactorAuthEnabled);
                 if ($enabled) {
-                    $output->writeln(__('Admin Adobe IMS integration is enabled'));
+                    $output->writeln(sprintf('Admin Adobe IMS integration is enabled'));
                     return Cli::RETURN_SUCCESS;
                 }
             }

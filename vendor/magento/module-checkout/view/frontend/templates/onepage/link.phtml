@@ -21,7 +21,7 @@ use Magento\Framework\Escaper;
                     "checkoutUrl":"<?= $escaper->escapeJs($block->getCheckoutUrl()) ?>"
                 }
             }'
-            class="action primary checkout loginCheckout<?= ($block->isDisabled()) ? ' disabled' : '' ?>"
+            class="action primary checkout<?= ($block->isDisabled()) ? ' disabled' : '' ?>"
             <?php if ($block->isDisabled()): ?>
                 disabled="disabled"
             <?php endif; ?>>

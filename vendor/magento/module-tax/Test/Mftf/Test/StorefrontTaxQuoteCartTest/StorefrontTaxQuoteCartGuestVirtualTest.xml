@@ -10,9 +10,9 @@
     <test name="StorefrontTaxQuoteCartGuestVirtualTest">
         <annotations>
             <features value="Tax"/>
-            <stories value="Tax Calculation in My Cart"/>
-            <title value="Tax for Virtual Product Quote should be recalculated in My Cart for Guest Customer"/>
-            <description value="Tax for Virtual Product Quote should be recalculated in My Cart for Guest Customer"/>
+            <stories value="Tax Calculation in Shopping Cart"/>
+            <title value="Tax for Virtual Product Quote should be recalculated in Shopping Cart for Guest Customer"/>
+            <description value="Tax for Virtual Product Quote should be recalculated in Shopping Cart for Guest Customer"/>
             <severity value="CRITICAL"/>
             <testCaseId value="MC-298"/>
             <group value="Tax"/>

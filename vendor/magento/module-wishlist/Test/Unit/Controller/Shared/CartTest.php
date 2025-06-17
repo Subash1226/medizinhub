@@ -280,7 +280,7 @@ class CartTest extends TestCase
      * 3. Quote has errors
      * 4. Should redirect to Cart flag
      * 5. Referer URL
-     * 6. My Cart URL
+     * 6. Shopping Cart URL
      * 7. Redirect URL (RESULT)
      *
      * @return array

@@ -15,7 +15,7 @@
     <entity name="AllPostCode" type="postcode">
         <data key="value">*</data>
     </entity>
-    <!-- My Cart Display Settings -->
+    <!-- Shopping Cart Display Settings -->
     <entity name="IncludeAndExcludeTaxInCartPrice" type="priceCart">
         <data key="value">3</data>
     </entity>
@@ -36,7 +36,7 @@
         <requiredEntity type="country">CountryUS</requiredEntity>
         <requiredEntity type="region">Region_CA</requiredEntity>
         <requiredEntity type="postcode">AllPostCode</requiredEntity>
-    <!-- My Cart Display Settings -->
+    <!-- Shopping Cart Display Settings -->
         <requiredEntity type="grandtotalCart">IncludeTaxInOrderTotalCart</requiredEntity>
         <requiredEntity type="full_summaryCart">DisplayFullTaxSummaryCart</requiredEntity>
         <requiredEntity type="zero_taxCart">DisplayZeroTaxSubtotalCart</requiredEntity>
@@ -47,7 +47,7 @@
         <requiredEntity type="country">CountryUS</requiredEntity>
         <requiredEntity type="region">Region_NY</requiredEntity>
         <requiredEntity type="postcode">AllPostCode</requiredEntity>
-    <!-- My Cart Display Settings -->
+    <!-- Shopping Cart Display Settings -->
         <requiredEntity type="grandtotalCart">IncludeTaxInOrderTotalCart</requiredEntity>
         <requiredEntity type="full_summaryCart">DisplayFullTaxSummaryCart</requiredEntity>
         <requiredEntity type="zero_taxCart">DisplayZeroTaxSubtotalCart</requiredEntity>
@@ -64,7 +64,7 @@
         <data key="value"/>
     </entity>
     <entity name="TaxConfigExcludeAndIncludeTaxInCart" type="tax_config_state">
-        <!-- My Cart Display Settings -->
+        <!-- Shopping Cart Display Settings -->
         <requiredEntity type="priceCart">IncludeAndExcludeTaxInCartPrice</requiredEntity>
         <requiredEntity type="subtotalCart">IncludeAndExcludeTaxInCartSubtotal</requiredEntity>
     </entity>

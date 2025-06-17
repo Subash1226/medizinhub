@@ -153,7 +153,7 @@ class IndexTest extends TestCase
             ->getMock();
         $title->expects($this->once())
             ->method('set')
-            ->with('My Cart');
+            ->with('Shopping Cart');
 
         $config = $this->getMockBuilder(Config::class)
             ->disableOriginalConstructor()

@@ -61,7 +61,7 @@ define([
                 $(this.modalWindow).modal('openModal');
             } else {
                 alert({
-                    content: $t('Guest checkout is disabl.')
+                    content: $t('Guest checkout is disabled.')
                 });
             }
         },

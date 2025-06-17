@@ -58,7 +58,7 @@ class CartTab extends TabWrapper
      */
     public function getTabLabel()
     {
-        return __('My Cart');
+        return __('Shopping Cart');
     }
 
     /**

@@ -84,7 +84,7 @@
         <waitForPageLoad stepKey="waitForProductPageLoad"/>
         <fillField selector="{{StorefrontProductActionSection.quantity}}" userInput="8" stepKey="fillQuantity"/>
         <actionGroup ref="StorefrontClickAddToCartOnProductPageActionGroup" stepKey="addToCartFromStorefrontProductPage"/>
-        <!--  Step 7: Go to My Cart -->
+        <!--  Step 7: Go to Shopping Cart -->
         <actionGroup ref="ClickViewAndEditCartFromMiniCartActionGroup" stepKey="goToShoppingCartFromMinicart1"/>
         <!--  Step 8: Open Estimate Shipping and Tax section -->
         <actionGroup ref="StorefrontCheckoutCartFillEstimateShippingAndTaxActionGroup" stepKey="setEstimateShippingAndTaxInitialAddressToUnitedStates">
@@ -97,7 +97,7 @@
         <waitForPageLoad stepKey="waitForProductPageLoad2"/>
         <fillField selector="{{StorefrontProductActionSection.quantity}}" userInput="2" stepKey="fillQuantity2"/>
         <actionGroup ref="StorefrontClickAddToCartOnProductPageActionGroup" stepKey="addToCartFromStorefrontProductPage2"/>
-        <!--  Step 10: Go to My Cart -->
+        <!--  Step 10: Go to Shopping Cart -->
         <actionGroup ref="ClickViewAndEditCartFromMiniCartActionGroup" stepKey="goToShoppingCartFromMinicart"/>
         <!-- Step 11: Should not see the discount because we have exceeded $2000 -->
         <actionGroup ref="StorefrontCartPageOpenActionGroup" stepKey="goToCartPage"/>

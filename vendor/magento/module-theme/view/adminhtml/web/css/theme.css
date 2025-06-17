@@ -31,18 +31,7 @@
     line-height: 0;
     overflow: hidden;
 }
-#order-billing_address_prefix{
-    display:none !important;
-   }
-    #order-billing_address_middlename{
-    display:none !important;
-   }
-   #order-billing_address_suffix{
-    display:none !important;
-   }
-   #order-billing_address_fax{
-    display:none !important;
-   }
+
 .js-files-container li .up, .js-files-container li .down {
     border: 1px solid #CCCCCC;
     cursor: pointer;

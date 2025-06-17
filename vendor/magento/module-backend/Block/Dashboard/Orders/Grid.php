@@ -103,11 +103,7 @@ class Grid extends \Magento\Backend\Block\Dashboard\Grid
     protected function _afterLoadCollection()
     {
         foreach ($this->getCollection() as $item) {
-            if ($item->getBillingAddress() && $item->getBillingAddress()->getName()) {
-                $item->getCustomer() ?: $item->setCustomer($item->getBillingAddress()->getName());
-            } else {
-                $item->setCustomer(__('Guest'));
-            }
+            $item->getCustomer() ?: $item->setCustomer($item->getBillingAddress()->getName());
         }
         return $this;
     }

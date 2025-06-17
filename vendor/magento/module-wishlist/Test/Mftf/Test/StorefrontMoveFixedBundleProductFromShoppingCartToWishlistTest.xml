@@ -11,8 +11,8 @@
     <test name="StorefrontMoveFixedBundleProductFromShoppingCartToWishlistTest">
         <annotations>
             <stories value="Wishlist"/>
-            <title value="Move Fixed Bundle Product from My Cart to Wishlist"/>
-            <description value="Move Fixed Bundle Product from My Cart to Wishlist"/>
+            <title value="Move Fixed Bundle Product from Shopping Cart to Wishlist"/>
+            <description value="Move Fixed Bundle Product from Shopping Cart to Wishlist"/>
             <severity value="CRITICAL"/>
             <testCaseId value="MC-14213"/>
             <group value="wishlist"/>

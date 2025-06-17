@@ -17,12 +17,7 @@ define([
          */
         getProductNameUnsanitizedHtml: function (productName) {
             // product name has already escaped on backend
-            // Truncate product name to 15 characters and add "..." if it exceeds 15 characters
-            if (productName.length > 32) {
-                return productName.substring(0, 32) + '...';
-            } else {
-                return productName;
-            }
+            return productName;
         },
 
         /**
