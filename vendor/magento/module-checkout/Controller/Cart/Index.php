@@ -54,7 +54,7 @@ class Index extends \Magento\Checkout\Controller\Cart implements HttpGetActionIn
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->getConfig()->getTitle()->set(__('Shopping Cart'));
+        $resultPage->getConfig()->getTitle()->set(__('My Cart'));
         return $resultPage;
     }
 }

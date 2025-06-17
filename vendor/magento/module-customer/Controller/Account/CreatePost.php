@@ -426,7 +426,7 @@ class CreatePost extends AbstractAccount implements CsrfAwareActionInterface, Ht
         } catch (LocalizedException $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
         } catch (\Exception $e) {
-            $this->messageManager->addExceptionMessage($e, __('We can\'t save the customer.'));
+            $this->messageManager->addException($e, $e->getMessage());
         }
 
         $this->session->setCustomerFormData($this->getRequest()->getPostValue());

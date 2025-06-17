@@ -51,7 +51,7 @@ define([
             stepNavigator.registerStep(
                 'payment',
                 null,
-                $t('Review & Payments'),
+                $t('Review & Payment'),
                 this.isVisible,
                 _.bind(this.navigate, this),
                 this.sortOrder
@@ -64,6 +64,7 @@ define([
          * Navigate method.
          */
         navigate: function () {
+            $('.opc-summary-wrapper').show();
             var self = this;
 
             if (!self.hasShippingMethod()) {

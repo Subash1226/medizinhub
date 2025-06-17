@@ -60,6 +60,7 @@ define([
                 return this.notCalculatedMessage;
             }
             price = this.totals()['shipping_incl_tax'];
+            console.log('Including Shipping Price:', price);
 
             return this.getFormattedPrice(price);
         },
@@ -74,6 +75,7 @@ define([
                 return this.notCalculatedMessage;
             }
             price = this.totals()['shipping_amount'];
+            console.log('Excluding Shipping Price:', price);
 
             return this.getFormattedPrice(price);
         }

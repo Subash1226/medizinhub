@@ -10,7 +10,7 @@
     <test name="StorefrontCustomerWithDefaultBillingAddressAndCartWithVirtualProductTaxTest">
         <annotations>
             <features value="Tax"/>
-            <stories value="Tax Calculation in Shopping Cart"/>
+            <stories value="Tax Calculation in My Cart"/>
             <title value="Tax for quote with virtual products only should be calculated based on customer default billing address"/>
             <description value="Tax for quote with virtual products only should be calculated based on customer default billing address"/>
             <severity value="CRITICAL"/>

@@ -181,7 +181,7 @@ $catalogHelper =$block->getData('catalogHelper');
                                 <option value=""><?= $block->escapeHtml(__('Please select')) ?></option>
                                 <option value="remove"><?= $block->escapeHtml(__('Remove')) ?></option>
                                 <?php if ($block->getCustomerId() && $block->getMoveToCustomerStorage()): ?>
-                                    <option value="cart"><?= $block->escapeHtml(__('Move to Shopping Cart')) ?></option>
+                                    <option value="cart"><?= $block->escapeHtml(__('Move to Cart')) ?></option>
                                     <?php if ($block->isMoveToWishlistAllowed($_item)): ?>
                                         <?php $wishlists = $block->getCustomerWishlists();?>
                                         <?php if (count($wishlists) <= 1): ?>

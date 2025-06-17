@@ -88,7 +88,7 @@ define([
                 stepNavigator.registerStep(
                     'shipping',
                     '',
-                    $t('Shipping'),
+                    $t('Delivery Location'),
                     this.visible, _.bind(this.navigate, this),
                     this.sortOrder
                 );
@@ -166,8 +166,9 @@ define([
          */
         navigate: function (step) {
             step && step.isVisible(true);
-        },
+            $('#checkout').removeClass('prescription-step');
 
+        },
         /**
          * @return {*}
          */
@@ -226,6 +227,8 @@ define([
          */
         showFormPopUp: function () {
             this.isFormPopUpVisible(true);
+            $('.action-update-address').hide();
+            $('.new-shipping-address-modal .modal-footer').show();
         },
 
         /**
@@ -242,7 +245,11 @@ define([
                 addressData = this.source.get('shippingAddress');
                 // if user clicked the checkbox, its value is true or false. Need to convert.
                 addressData['save_in_address_book'] = this.saveInAddressBook ? 1 : 0;
-
+                if(addressData['region_id'] && $('[name="region_id"]').attr("aria-required")){
+                    addressData['region'] = $('[name="region_id"]').find("option:selected").attr("data-title");
+                }else{
+                    addressData['region'] = $('[name="region"]').val();
+                }
                 // New address must be selected as a shipping address
                 newShippingAddress = createShippingAddress(addressData);
                 selectShippingAddress(newShippingAddress);

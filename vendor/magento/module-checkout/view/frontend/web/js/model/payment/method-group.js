@@ -14,7 +14,7 @@ define([
     return Element.extend({
         defaults: {
             alias: DEFAULT_GROUP_ALIAS,
-            title: $t('Payment Method'),
+            title: $t('Select Your Payment Method'),
             sortOrder: 100,
             displayArea: 'payment-methods-items-${ $.alias }'
         },

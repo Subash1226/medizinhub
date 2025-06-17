@@ -373,9 +373,9 @@ class Currency extends \Magento\Framework\Model\AbstractModel
          */
         $price = sprintf("%F", $price);
 
-        if ($this->canUseNumberFormatter($options)) {
-            return $this->formatCurrency($price, $options);
-        }
+       // if ($this->canUseNumberFormatter($options)) {
+       //     return $this->formatCurrency($price, $options);
+       // }
 
         return $this->_localeCurrency->getCurrency($this->getCode())->toCurrency($price, $options);
     }

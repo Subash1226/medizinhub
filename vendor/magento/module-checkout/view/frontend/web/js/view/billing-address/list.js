@@ -17,7 +17,7 @@ define([
              * @returns {String}
              */
             getAddressInline: function () {
-                return $t('New Address');
+                return $t('Add New Address');
             },
             customerAddressId: null
         },

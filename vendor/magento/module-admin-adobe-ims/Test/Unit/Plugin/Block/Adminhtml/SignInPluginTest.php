@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2022 Adobe
- * All Rights Reserved.
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 declare(strict_types=1);
 
@@ -138,7 +138,7 @@ class SignInPluginTest extends TestCase
      * @param array $userData
      * @return array
      */
-    private static function getDefaultComponentConfig(array $userData): array
+    private function getDefaultComponentConfig(array $userData): array
     {
         return [
             'component' => 'Magento_AdobeIms/js/signIn',
@@ -163,7 +163,7 @@ class SignInPluginTest extends TestCase
     /**
      * @return array
      */
-    public static function userDataProvider(): array
+    public function userDataProvider(): array
     {
         return [
             'Existing authorized user' => [
@@ -173,7 +173,7 @@ class SignInPluginTest extends TestCase
                     'email' => 'john@email.com',
                 ],
                 [],
-                self::getDefaultComponentConfig([
+                $this->getDefaultComponentConfig([
                     'isAuthorized' => true,
                     'name' => 'John Doe',
                     'email' => 'john@email.com',
@@ -189,7 +189,7 @@ class SignInPluginTest extends TestCase
                     'image' => 'image.png'
                 ],
                 [],
-                self::getDefaultComponentConfig(self::getDefaultUserData()),
+                $this->getDefaultComponentConfig($this->getDefaultUserData()),
                 false
             ],
         ];
@@ -200,7 +200,7 @@ class SignInPluginTest extends TestCase
      *
      * @return array
      */
-    private static function getDefaultUserData(): array
+    private function getDefaultUserData(): array
     {
         return [
             'isAuthorized' => false,

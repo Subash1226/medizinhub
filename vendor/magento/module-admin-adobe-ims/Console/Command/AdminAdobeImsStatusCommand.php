@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2022 Adobe
- * All Rights Reserved.
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 
 declare(strict_types=1);
@@ -47,7 +47,7 @@ class AdminAdobeImsStatusCommand extends Command
     {
         try {
             $status = $this->getModuleStatus();
-            $output->writeln(sprintf('Admin Adobe IMS integration is %s', $status));
+            $output->writeln(__('Admin Adobe IMS integration is %1', $status));
 
             return Cli::RETURN_SUCCESS;
         } catch (\Exception $e) {

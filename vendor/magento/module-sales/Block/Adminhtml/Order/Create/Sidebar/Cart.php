@@ -46,7 +46,7 @@ class Cart extends \Magento\Sales\Block\Adminhtml\Order\Create\Sidebar\AbstractS
      */
     public function getHeaderText()
     {
-        return __('Shopping Cart');
+        return __('My Cart');
     }
 
     /**
@@ -133,7 +133,7 @@ class Cart extends \Magento\Sales\Block\Adminhtml\Order\Create\Sidebar\AbstractS
             'empty_customer_cart_button',
             \Magento\Backend\Block\Widget\Button::class,
             [
-                'label' => __('Clear Shopping Cart'),
+                'label' => __('Clear Cart'),
                 'onclick' => 'order.clearShoppingCart(\'' . $deleteAllConfirmString . '\')'
             ]
         );

@@ -6,7 +6,39 @@
 
 /** @var \Magento\Framework\View\Element\Template $block */
 ?>
-<p><?= $block->escapeHtml(__('You have signed out and will go to our homepage in 5 seconds.')) ?></p>
+<div class="logout-container">
+<div class="logout-box">
+    <div class="logout-tick">
+    <img class="logout-img" src="http://local.medizinhub.com/media/wysiwyg/tick.png" alt="">
+    </div>
+    <div class="logout-text">
+        <p class="logout-text-have">You have been logged out</p>
+        <p style="font-weight:600;">Thank You</p>
+    </div>
+</div>
+</div>
+
+<style>
+.logout-container{
+width:100%;
+text-align:center;
+padding:10px 0 30px 0;
+}
+.logout-box{
+border:1px solid #ccc;
+padding:40px;
+margin-left:80px;
+margin-right:80px;
+}
+.logout-text{
+font-size:18px;
+font-family:Source Sans Pro;
+
+}
+
+
+
+</style>
 <script type="text/x-magento-init">
     {
         "*": {

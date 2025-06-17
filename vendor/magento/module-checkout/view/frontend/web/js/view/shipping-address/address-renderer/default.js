@@ -1,8 +1,3 @@
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
 define([
     'jquery',
     'ko',
@@ -36,7 +31,6 @@ define([
 
                 return isSelected;
             }, this);
-
             return this;
         },
 
@@ -117,7 +111,69 @@ define([
         editAddress: function () {
             formPopUpState.isVisible(true);
             this.showPopup();
+            this.populateFormWithAddress(this.address());
+              },
 
+        /**
+         * Update address using AJAX.
+         */
+        updateAddress: function () {
+            var address = this.address();
+            var form = $('#co-shipping-form');
+            var formData = form.serializeArray();
+            var addressId = address.customerAddressId;
+
+            if (!addressId) {
+                return;
+            }
+            formData.push({name: 'address_id', value: addressId});
+
+            $.ajax({
+                url: '/home/index/UpdateAddress/id/' + addressId,
+                type: 'POST',
+                data: $.param(formData),
+                showLoader: true,
+                dataType: 'json',
+                success: function (response) {
+                    if (response.success) {
+                        location.reload();
+                        $('.action-close').click();
+                    } else {
+                        console.error('Failed to update address:', response.message);
+                    }
+                }.bind(this),
+                error: function (xhr, status, error) {
+                    console.error('Failed to update address:', error);
+                }
+            });
+        },
+
+        deleteAddress: function (addressId) {
+            var addressItem = $('#address-' + addressId);
+            var addressItems = $('.shipping-address-item');
+
+            if (addressItems.length > 1) {
+                if (confirm('Are you sure you want to delete this address?')) {
+                    var deleteUrl = '/home/index/delete/id/' + addressId;
+                    var NewAddress = $('#opc-new-shipping-address');
+                    var Popup = $('.new-address-popup');
+
+                    $.ajax({
+                        url: deleteUrl,
+                        type: 'POST',
+                        showLoader: true,
+                        dataType: 'json',
+                        success: function (response) {
+                            addressItem.remove();
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('AJAX Error:', error);
+                        }
+                    });
+                }
+            } else {
+                alert('You cannot delete the last address.');
+            }
         },
 
         /**
@@ -125,6 +181,58 @@ define([
          */
         showPopup: function () {
             $('[data-open-modal="opc-new-shipping-address"]').trigger('click');
-        }
+        },
+
+        /**
+         * Populate form fields with address data.
+         */
+        populateFormWithAddress: function (address) {
+            $('.new-shipping-address-modal .modal-footer').hide();
+            $('.action-update-address').show();
+            var form = $('#co-shipping-form');
+            var formFields = form.find('input, select, textarea');
+
+            ko.utils.arrayForEach(formFields, function (field) {
+                var fieldName = $(field).attr('name');
+                console.log('Processing field:', fieldName);
+
+                if (address.hasOwnProperty(fieldName)) {
+                    if (fieldName === 'street[]' && Array.isArray(address.street)) {
+                        console.log('Populating street address:', address.street);
+
+                        address.street.forEach(function (streetLine, index) {
+                            var streetField = form.find(`input[name="street[${index}]"]`);
+                            if (streetField.length > 0) {
+                                streetField.val(streetLine);
+                                console.log(`Populating street[${index}]: ${streetLine}`);
+                            } else {
+                                var newStreetField = $('<input>')
+                                    .attr('type', 'text')
+                                    .attr('name', `street[${index}]`)
+                                    .val(streetLine)
+                                    .addClass('input-text');
+                                form.append(newStreetField);
+                                console.log(`Creating and populating new street[${index}]: ${streetLine}`);
+                            }
+                        });
+                    } else {
+                        $(field).val(address[fieldName]);
+                        console.log(`Populating ${fieldName}: ${address[fieldName]}`);
+                    }
+                }
+            });
+
+            if ($('.action-update-address').length === 0) {
+                var updateButton = $('<button/>', {
+                    class: 'action primary action-update-address',
+                    type: 'button',
+                    'data-role': 'action',
+                    text: 'Update Address',
+                    click: this.updateAddress.bind(this)
+                });
+                form.append(updateButton);
+            }
+        },
+
     });
 });

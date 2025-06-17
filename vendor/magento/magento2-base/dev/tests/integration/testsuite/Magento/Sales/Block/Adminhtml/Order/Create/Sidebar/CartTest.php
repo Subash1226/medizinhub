@@ -82,7 +82,7 @@ class CartTest extends TestCase
         $confirmation = __('Are you sure you want to delete all items from shopping cart?');
         $button = $this->block->getChildBlock('empty_customer_cart_button');
         $this->assertEquals(sprintf("order.clearShoppingCart('%s')", $confirmation), $button->getOnclick());
-        $this->assertEquals(__('Clear Shopping Cart'), $button->getLabel());
+        $this->assertEquals(__('Clear My Cart'), $button->getLabel());
     }
 
     /**

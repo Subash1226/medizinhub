@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2022 Adobe
- * All Rights Reserved.
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 
 declare(strict_types=1);
@@ -112,7 +112,7 @@ class ImsConnection
 
         $this->validateResponse($curl);
 
-        return $this->getCaseInsensitiveLocation($curl->getHeaders());
+        return $curl->getHeaders()['location'] ?? '';
     }
 
     /**
@@ -124,18 +124,21 @@ class ImsConnection
      */
     private function validateResponse(Curl $curl): void
     {
-        $headers = $curl->getHeaders();
-        $location = $this->getCaseInsensitiveLocation($headers);
-
-        if ($location !== '') {
-            if (preg_match('/error=([a-z_]+)/i', $location, $error) && isset($error[0], $error[1])) {
+        if (isset($curl->getHeaders()['location'])) {
+            if (preg_match(
+                '/error=([a-z_]+)/i',
+                $curl->getHeaders()['location'],
+                $error
+            )
+                && isset($error[0], $error[1])
+            ) {
                 throw new InvalidArgumentException(
                     __('Could not connect to Adobe IMS Service: %1.', $error[1])
                 );
             }
         }
 
-        if ($curl->getStatus() !== self::HTTP_REDIRECT_CODE || $location === '') {
+        if ($curl->getStatus() !== self::HTTP_REDIRECT_CODE) {
             throw new InvalidArgumentException(
                 __('Could not get a valid response from Adobe IMS Service.')
             );
@@ -233,24 +236,5 @@ class ImsConnection
         }
 
         return $this->json->unserialize($curl->getBody());
-    }
-
-    /**
-     * Get case-insensitive location from headers
-     *
-     * @param array $headers
-     * @return string
-     */
-    private function getCaseInsensitiveLocation(array $headers): string
-    {
-        $location = '';
-
-        foreach ($headers as $key => $value) {
-            if (strcasecmp($key, 'location') === 0) {
-                $location = $value;
-                break;
-            }
-        }
-        return $location;
     }
 }

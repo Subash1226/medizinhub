@@ -29,9 +29,9 @@
                class="cart items data table"
                data-mage-init='{"shoppingCart":{"emptyCartButton": ".action.clear",
                "updateCartActionContainer": "#update_cart_action_container"}}'>
-            <caption class="table-caption"><?= $block->escapeHtml(__('Shopping Cart Items')) ?></caption>
+            <caption class="table-caption"><?= $block->escapeHtml(__('My Cart Items')) ?></caption>
             <thead>
-                <tr>
+                <tr class="table-row-cart">
                     <th class="col item" scope="col"><span><?= $block->escapeHtml(__('Item')) ?></span></th>
                     <th class="col price" scope="col"><span><?= $block->escapeHtml(__('Price')) ?></span></th>
                     <th class="col qty" scope="col"><span><?= $block->escapeHtml(__('Qty')) ?></span></th>
@@ -61,18 +61,19 @@
                     name="update_cart_action"
                     data-cart-empty=""
                     value="empty_cart"
-                    title="<?= $block->escapeHtml(__('Clear Shopping Cart')) ?>"
+                    title="<?= $block->escapeHtml(__('Clear Cart')) ?>"
                     class="action clear" id="empty_cart_button">
-                <span><?= $block->escapeHtml(__('Clear Shopping Cart')) ?></span>
+                <span><?= $block->escapeHtml(__('Clear Cart')) ?></span>
             </button>
         <?php endif ?>
         <button type="submit"
+                id="cart-item-update"
                 name="update_cart_action"
                 data-cart-item-update=""
                 value="update_qty"
-                title="<?= $block->escapeHtml(__('Update Shopping Cart')) ?>"
+                title="<?= $block->escapeHtml(__('Update Cart')) ?>"
                 class="action update">
-            <span><?= $block->escapeHtml(__('Update Shopping Cart')) ?></span>
+            <span><?= $block->escapeHtml(__('Update Cart')) ?></span>
         </button>
         <input type="hidden" value="" id="update_cart_action_container" data-cart-item-update=""/>
     </div>

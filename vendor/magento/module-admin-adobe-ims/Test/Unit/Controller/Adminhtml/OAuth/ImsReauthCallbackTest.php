@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2022 Adobe
- * All Rights Reserved.
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 declare(strict_types=1);
 
@@ -121,10 +121,8 @@ class ImsReauthCallbackTest extends TestCase
             ->with('form_key')
             ->willReturnSelf();
         $this->request->expects($this->any())->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
-                ['state'] => null,
-                ['code'] => 'asdasdasdad'
-            });
+            ->withConsecutive(['state'], ['code'])
+            ->willReturnOnConsecutiveCalls(null, 'asdasdasdad');
         $this->resultFactory->expects($this->once())
             ->method('create')
             ->with(ResultFactory::TYPE_RAW)

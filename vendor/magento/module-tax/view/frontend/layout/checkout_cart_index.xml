@@ -70,7 +70,7 @@
                                         <item name="template" xsi:type="string">Magento_Tax/checkout/cart/totals/grand-total</item>
                                         <item name="exclTaxLabel" xsi:type="string" translate="true">Order Total Excl. Tax</item>
                                         <item name="inclTaxLabel" xsi:type="string" translate="true">Order Total Incl. Tax</item>
-                                        <item name="title" xsi:type="string" translate="true">Order Total</item>
+                                        <item name="title" xsi:type="string" translate="true">Total Amount to Pay</item>
                                     </item>
                                 </item>
                             </item>

@@ -10,7 +10,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
     <actionGroup name="EditTaxConfigurationByUIActionGroup">
         <annotations>
-            <description>Goes to the 'Configuration' page for 'Tax'. Enables the display of Taxes in the Storefront Shopping Cart and Checkout page.</description>
+            <description>Goes to the 'Configuration' page for 'Tax'. Enables the display of Taxes in the Storefront My Cart and Checkout page.</description>
         </annotations>
 
         <!-- navigate to the tax configuration page -->

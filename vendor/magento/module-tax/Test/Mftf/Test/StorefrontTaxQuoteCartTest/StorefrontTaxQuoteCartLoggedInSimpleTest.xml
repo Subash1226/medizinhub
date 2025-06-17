@@ -10,9 +10,9 @@
     <test name="StorefrontTaxQuoteCartLoggedInSimpleTest">
         <annotations>
             <features value="Tax"/>
-            <stories value="Tax Calculation in Shopping Cart"/>
-            <title value="Tax for Simple Product Quote should be recalculated in Shopping Cart for Logged in Customer with Default Address"/>
-            <description value="Tax for Simple Product Quote should be recalculated in Shopping Cart for Logged in Customer with Default Address"/>
+            <stories value="Tax Calculation in My Cart"/>
+            <title value="Tax for Simple Product Quote should be recalculated in My Cart for Logged in Customer with Default Address"/>
+            <description value="Tax for Simple Product Quote should be recalculated in My Cart for Logged in Customer with Default Address"/>
             <severity value="CRITICAL"/>
             <testCaseId value="MC-295"/>
             <group value="Tax"/>

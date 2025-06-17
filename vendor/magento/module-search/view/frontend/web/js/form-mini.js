@@ -62,7 +62,7 @@ define([
 
             _.bindAll(this, '_onKeyDown', '_onPropertyChange', '_onSubmit');
 
-            this.submitBtn.disabled = true;
+          //  this.submitBtn.disabled = true;
 
             this.element.attr('autocomplete', this.options.autocomplete);
 
@@ -300,7 +300,7 @@ define([
                 dropdown = $('<ul role="listbox"></ul>'),
                 value = this.element.val();
 
-            this.submitBtn.disabled = true;
+           this.submitBtn.disabled = true;
 
             if (value.length >= parseInt(this.options.minSearchLength, 10)) {
                 this.submitBtn.disabled = false;

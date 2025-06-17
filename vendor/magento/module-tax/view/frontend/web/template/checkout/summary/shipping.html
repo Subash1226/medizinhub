@@ -67,24 +67,28 @@
     </tr>
     <!-- /ko -->
     <!-- ko if: isExcludingDisplayed() -->
-    <tr class="totals shipping excl">
-        <th class="mark" scope="row">
-            <span class="label" data-bind="i18n: title"></span>
-            <!-- ko if: haveToShowCoupon() -->
-                <span class="label description" data-bind="text: getCouponDescription()"></span>
-            <!-- /ko -->
-            <span class="value" data-bind="text: getShippingMethodTitle()"></span>
-        </th>
-        <td class="amount">
-            <!-- ko if: isCalculated() -->
-            <span class="price"
-                  data-bind="text: getValue(), attr: {'data-th': title}"></span>
-            <!-- /ko -->
-            <!-- ko ifnot: isCalculated() -->
-            <span class="not-calculated"
-                  data-bind="text: getValue(), attr: {'data-th': title}"></span>
-            <!-- /ko -->
-        </td>
-    </tr>
-    <!-- /ko -->
+<tr class="totals shipping excl">
+    <th class="mark" scope="row">
+        <span class="label" data-bind="i18n: title"></span>
+        <!-- ko if: haveToShowCoupon() -->
+            <span class="label description" data-bind="text: getCouponDescription()"></span>
+        <!-- /ko -->
+        <span class="value" data-bind="text: getShippingMethodTitle()"></span>
+    </th>
+    <td class="amount">
+        <!-- ko if: totals()['shipping_amount'] < 1.00 -->
+        <span id="shipping-fees" style="color: #01AA65 !important;" class="price shipping-free" data-bind="i18n: 'Free'"></span>
+        <!-- /ko -->
+        <!-- ko if: totals()['shipping_amount'] >= 1.00 -->
+        <!-- ko if: isCalculated() -->
+        <span class="price" data-bind="text: getValue(), attr: {'data-th': title}"></span>
+        <!-- /ko -->
+        <!-- ko ifnot: isCalculated() -->
+        <span class="not-calculated" data-bind="text: getValue(), attr: {'data-th': title}"></span>
+        <!-- /ko -->
+        <!-- /ko -->
+    </td>
+</tr>
+<!-- /ko -->
+
 <!-- /ko -->

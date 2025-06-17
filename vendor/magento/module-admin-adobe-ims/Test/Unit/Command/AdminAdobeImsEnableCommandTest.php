@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2022 Adobe
- * All Rights Reserved.
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 
 declare(strict_types=1);
@@ -157,36 +157,36 @@ class AdminAdobeImsEnableCommandTest extends TestCase
      *
      * @return array[]
      */
-    public static function cliCommandProvider(): array
+    public function cliCommandProvider(): array
     {
         return [
             [
                 true,
-                self::once(),
-                self::once(),
+                $this->once(),
+                $this->once(),
                 'Admin Adobe IMS integration is enabled',
                 true
             ],
             [
                 false,
-                self::never(),
-                self::never(),
+                $this->never(),
+                $this->never(),
                 '<error>The Client ID, Client Secret, Organization ID and 2FA are required ' .
                 'when enabling the Admin Adobe IMS Module</error>',
                 true
             ],
             [
                 true,
-                self::never(),
-                self::never(),
+                $this->never(),
+                $this->never(),
                 '<error>The Client ID, Client Secret, Organization ID and 2FA are required ' .
                 'when enabling the Admin Adobe IMS Module</error>',
                 false
             ],
             [
                 false,
-                self::never(),
-                self::never(),
+                $this->never(),
+                $this->never(),
                 '<error>The Client ID, Client Secret, Organization ID and 2FA are required ' .
                 'when enabling the Admin Adobe IMS Module</error>',
                 false

@@ -57,10 +57,16 @@
             <!-- /ko -->
             <span class="value" data-bind="text: getShippingMethodTitle()"></span>
         </th>
-        <td class="amount">
-            <span class="price"
-                  data-bind="text: getValue(), attr: {'data-th': title}"></span>
-        </td>
+           <!-- ko if: totals()['shipping_amount'] < 1.00 -->
+    <td class="amount">
+        <span id="shipping-fees" class="price shipping-free"><!-- ko i18n: 'Free' --><!-- /ko --></span>
+    </td>
+    <!-- /ko -->
+    <!-- ko if: totals()['shipping_amount'] > 1.00 -->
+    <td class="amount">
+        <span class="price" data-bind="text: getValue()"></span>
+    </td>
+    <!-- /ko -->
     </tr>
     <!-- /ko -->
 <!-- /ko -->

@@ -31,10 +31,9 @@ class CopyrightUnitTest extends AbstractSniffUnitTest
                 1 => 1,
             ];
         }
-
         if ($testFile === 'CopyrightUnitTest.2.inc' || $testFile === 'CopyrightUnitTest.3.inc') {
             return [
-                null => 1,
+                3 => 1,
             ];
         }
 

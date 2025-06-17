@@ -207,20 +207,28 @@ define([
         /**
          * @param {String} form
          */
+
         enableAddToCartButton: function (form) {
             var addToCartButtonTextAdded = this.options.addToCartButtonTextAdded || $t('Added'),
                 self = this,
                 addToCartButton = $(form).find(this.options.addToCartButtonSelector);
-
             addToCartButton.find('span').text(addToCartButtonTextAdded);
             addToCartButton.prop('title', addToCartButtonTextAdded);
 
-            setTimeout(function () {
-                var addToCartButtonTextDefault = self.options.addToCartButtonTextDefault || $t('Add to Cart');
+            function addToCartFunction() {
+                window.location.href = '/checkout/cart';
+            }
 
+            setTimeout(function () {
+                var addToCartButtonTextDefault = self.options.addToCartButtonTextDefault || $t('View Cart');
+                sessionStorage.setItem("product_added",true);
                 addToCartButton.removeClass(self.options.addToCartButtonDisabledClass);
-                addToCartButton.find('span').text(addToCartButtonTextDefault);
+                addToCartButton.find('span').text(addToCartButtonTextDefault).attr('id','addtocart-btn');
                 addToCartButton.prop('title', addToCartButtonTextDefault);
+                addToCartButton.attr('type', 'button');
+                $('#addtocart-btn').click(function() {
+                    addToCartButton.attr('onclick', addToCartFunction);
+                });
             }, 1000);
         }
     });
