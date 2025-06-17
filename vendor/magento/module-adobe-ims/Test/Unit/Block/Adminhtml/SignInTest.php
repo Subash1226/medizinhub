@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2022 Adobe
- * All Rights Reserved.
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 declare(strict_types=1);
 
@@ -15,9 +15,7 @@ use Magento\AdobeImsApi\Api\UserAuthorizedInterface;
 use Magento\AdobeImsApi\Api\UserProfileRepositoryInterface;
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Backend\Block\Template\Context;
-use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\Serialize\Serializer\JsonHexTag;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
@@ -87,17 +85,6 @@ class SignInTest extends TestCase
         $this->jsonHexTag = $this->createMock(JsonHexTag::class);
 
         $objectManager = new ObjectManager($this);
-        $objects = [
-            [
-                JsonHelper::class,
-                $this->createMock(JsonHelper::class)
-            ],
-            [
-                DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
-        ];
-        $objectManager->prepareObjectManager($objects);
         $this->signInBlock = $objectManager->getObject(
             SignInBlock::class,
             [
@@ -168,7 +155,7 @@ class SignInTest extends TestCase
      * @param array $userData
      * @return array
      */
-    private static function getDefaultComponentConfig(array $userData): array
+    private function getDefaultComponentConfig(array $userData): array
     {
         return [
             'component' => 'Magento_AdobeIms/js/signIn',
@@ -195,7 +182,7 @@ class SignInTest extends TestCase
      *
      * @return array
      */
-    private static function getConfigProvideConfig(): array
+    private function getConfigProvideConfig(): array
     {
         return [
             'component' => 'Magento_AdobeIms/js/test',
@@ -221,7 +208,7 @@ class SignInTest extends TestCase
      *
      * @return array
      */
-    private static function getDefaultUserData(): array
+    private function getDefaultUserData(): array
     {
         return [
             'isAuthorized' => false,
@@ -234,7 +221,7 @@ class SignInTest extends TestCase
     /**
      * @return array
      */
-    public static function userDataProvider(): array
+    public function userDataProvider(): array
     {
         return [
             'Existing authorized user' => [
@@ -247,7 +234,7 @@ class SignInTest extends TestCase
                     'image' => 'image.png'
                 ],
                 [],
-                self::getDefaultComponentConfig([
+                $this->getDefaultComponentConfig([
                     'isAuthorized' => true,
                     'name' => 'John',
                     'email' => 'john@email.com',
@@ -264,7 +251,7 @@ class SignInTest extends TestCase
                     'image' => 'image.png'
                 ],
                 [],
-                self::getDefaultComponentConfig(self::getDefaultUserData()),
+                $this->getDefaultComponentConfig($this->getDefaultUserData()),
             ],
             'Non-existing user' => [
                 13,
@@ -276,7 +263,7 @@ class SignInTest extends TestCase
                     'image' => 'image.png'
                 ],
                 [],
-                self::getDefaultComponentConfig(self::getDefaultUserData()),
+                $this->getDefaultComponentConfig($this->getDefaultUserData()),
             ],
             'Existing user with additional config provider' => [
                 14,
@@ -287,10 +274,10 @@ class SignInTest extends TestCase
                     'email' => 'john@email.com',
                     'image' => 'image.png'
                 ],
-                self::getConfigProvideConfig(),
+                $this->getConfigProvideConfig(),
                 array_replace_recursive(
-                    self::getDefaultComponentConfig(self::getDefaultUserData()),
-                    self::getConfigProvideConfig()
+                    $this->getDefaultComponentConfig($this->getDefaultUserData()),
+                    $this->getConfigProvideConfig()
                 )
             ]
         ];

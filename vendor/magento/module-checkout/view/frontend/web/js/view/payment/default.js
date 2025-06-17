@@ -55,6 +55,8 @@ define([
          * @return {exports}
          */
         initialize: function () {
+            $('#checkout').removeClass('prescription-step');
+            $('.opc-summary-wrapper').show();
             var billingAddressCode,
                 billingAddressData,
                 defaultAddressData;

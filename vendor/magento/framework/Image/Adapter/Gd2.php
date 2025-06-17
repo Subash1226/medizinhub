@@ -90,15 +90,16 @@ class Gd2 extends AbstractAdapter
      * @return bool
      */
     private function validateURLScheme(string $filename) : bool
-    {
-        $allowed_schemes = ['ftp', 'ftps', 'http', 'https'];
-        $url = parse_url($filename);
-        if ($url && isset($url['scheme']) && !in_array($url['scheme'], $allowed_schemes)) {
-            return false;
-        }
+{
+          $allowed_schemes = ['ftp', 'ftps', 'http', 'https'];
+          $url = parse_url($filename);
+          if ($url && isset($url['scheme']) && !in_array($url['scheme'], $allowed_schemes) && !file_exists($filename)) {
+              return false;
+          }
 
-        return true;
-    }
+          return true;   
+}
+
 
     /**
      * Checks whether memory limit is reached.

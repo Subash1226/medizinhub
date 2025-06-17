@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2022 Adobe
- * All Rights Reserved.
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 declare(strict_types=1);
 
@@ -90,7 +90,7 @@ class ImsWebapiRepositoryTest extends TestCase
         $this->loggerMock = $this->createMock(LoggerInterface::class);
         $this->entityCollectionFactory = $this->getMockBuilder(CollectionFactory::class)
             ->disableOriginalConstructor()
-            ->onlyMethods(['create'])
+            ->setMethods(['create'])
             ->getMock();
 
         $this->collectionProcessor = $this->createMock(CollectionProcessorInterface::class);
@@ -191,7 +191,7 @@ class ImsWebapiRepositoryTest extends TestCase
     {
         $collectionSize = 1;
         $searchCriteriaMock = $this->getMockBuilder(SearchCriteriaInterface::class)
-            ->onlyMethods(['getPageSize'])
+            ->setMethods(['getPageSize'])
             ->getMockForAbstractClass();
 
         $searchCriteriaMock->expects($this->any())

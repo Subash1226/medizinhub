@@ -6,9 +6,9 @@
 -->
 <!-- ko if: isCalculated() -->
 <tr class="totals shipping excl">
-    <th class="mark" colspan="1" scope="row" data-bind="text: title + ' (' + getShippingMethodTitle() + ')'"></th>
+    <th style="color: #263238;  font-family:Source Sans Pro;font-size: 16px;font-weight: 400;" class="mark" colspan="1" scope="row" data-bind="text: title"></th>
     <td class="amount">
-        <span class="price" data-bind="text: getValue()"></span>
+        <span id="delivery-fee" style="color: #263238;font-family:Source Sans Pro; font-size: 16px;font-weight:400;" class="price" data-bind="text: getValue()"></span>
     </td>
 </tr>
 <!-- /ko -->

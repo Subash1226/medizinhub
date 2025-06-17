@@ -3,28 +3,16 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-
 ?>
-<div class="checkout-success">
-    <?php if ($block->getOrderId()) : ?>
-        <?php if ($block->getCanViewOrder()) : ?>
-            <p><?= $block->escapeHtml(__('Your order number is: %1.', sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeUrl($block->getViewOrderUrl()), $block->getOrderId())), ['a', 'strong']) ?></p>
-        <?php else : ?>
-            <p><?= $block->escapeHtml(__('Your order # is: <span>%1</span>.', $block->getOrderId()), ['span']) ?></p>
-        <?php endif; ?>
-        <?php if ($block->getIsOrderStorePickup()->execute()) : ?>
-            <p><?= $block->escapeHtml(__('We\'ll email you an order and pick-up confirmation with details.')) ?></p>
-        <?php else : ?>
-            <p><?= $block->escapeHtml(__('We\'ll email you an order confirmation with details and tracking info.')) ?></p>
-        <?php endif; ?>
-    <?php endif; ?>
-
-    <?= $block->getAdditionalInfoHtml() ?>
-
-    <div class="actions-toolbar">
-        <div class="primary">
-            <a class="action primary continue"
-               href="<?= $block->escapeUrl($block->getContinueUrl()) ?>"><span><?= $block->escapeHtml(__('Continue Shopping')) ?></span></a>
-        </div>
+  <div class="checkout-success">
+    <div class="thanks-success">
+        <div class="thanks-img"><img class="success-img" src="http://local.medizinhub.com/media/wysiwyg/tick.png" alt=""></div>
+        <p class="order-confirmed">Your Order is Confirmed!</p>
+        <p class="shipping-order">We’ll send you a order to your shipping address
+    as soon as possible</p>
+    <div class="primary">
+                <button class="button-success"><a class="btn-success"
+                  href="<?= $block->escapeUrl($block->getContinueUrl()) ?>">Continue Shopping</a></button>
+            </div>
     </div>
-</div>
+    </div>

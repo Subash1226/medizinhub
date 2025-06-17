@@ -182,7 +182,7 @@
         <click selector="{{CheckoutCartSummarySection.taxAmount}}" stepKey="clickTaxAmount"/>
         <see selector="{{CheckoutCartSummarySection.canadaTaxAmount}}" userInput="$5.75" stepKey="assertGstAmount"/>
         <see selector="{{CheckoutCartSummarySection.canadaPstTaxAmount}}" userInput="$5.75" stepKey="assertPstAmount"/>
-        <!--Assert Shopping Cart Summary-->
+        <!--Assert My Cart Summary-->
         <actionGroup ref="AssertStorefrontShoppingCartSummaryWithShippingActionGroup" stepKey="AssertCartSummary" >
             <argument name="subtotal" value="$100.00"/>
             <argument name="shipping" value="$5.00"/>

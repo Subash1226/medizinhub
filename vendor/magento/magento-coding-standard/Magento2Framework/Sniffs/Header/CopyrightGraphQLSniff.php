@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2021 Adobe
- * All Rights Reserved.
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 declare(strict_types = 1);
 
@@ -12,8 +12,11 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class CopyrightGraphQLSniff implements Sniff
 {
-    use CopyrightValidation;
     private const WARNING_CODE = 'FoundCopyrightMissingOrWrongFormat';
+
+    private const COPYRIGHT_MAGENTO_TEXT = 'Copyright © Magento, Inc. All rights reserved.';
+    private const COPYRIGHT_ADOBE = '/Copyright \d+ Adobe/';
+    private const COPYRIGHT_ADOBE_TEXT = 'ADOBE CONFIDENTIAL';
 
     private const FILE_EXTENSION = 'graphqls';
 
@@ -42,12 +45,16 @@ class CopyrightGraphQLSniff implements Sniff
         // @phpcs:ignore Magento2.Functions.DiscouragedFunction.Discouraged
         $content = file_get_contents($phpcsFile->getFilename());
 
-        if ($this->isCopyrightYearValid($content) === false) {
-            $phpcsFile->addWarningOnLine(
-                'Copyright is missing or Copyright content/year is not valid',
-                null,
-                self::WARNING_CODE
-            );
+        if (strpos($content, self::COPYRIGHT_MAGENTO_TEXT) !== false
+            || preg_match(self::COPYRIGHT_ADOBE, $content)
+                || strpos($content, self::COPYRIGHT_ADOBE_TEXT) !== false) {
+            return;
         }
+
+        $phpcsFile->addWarningOnLine(
+            'Copyright is missing or has wrong format',
+            null,
+            self::WARNING_CODE
+        );
     }
 }

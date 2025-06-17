@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2022 Adobe
- * All Rights Reserved.
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 declare(strict_types=1);
 
@@ -55,7 +55,7 @@ class ReplaceVerifyIdentityWithImsPluginTest extends TestCase
         $objectManagerHelper = new ObjectManagerHelper($this);
 
         $this->storageMock = $this->getMockBuilder(StorageInterface::class)
-            ->addMethods(['getAdobeAccessToken', 'getAdobeReAuthToken', 'setAdobeReAuthToken'])
+            ->setMethods(['getAdobeAccessToken', 'getAdobeReAuthToken', 'setAdobeReAuthToken'])
             ->getMockForAbstractClass();
 
         $this->authMock = $this->getMockBuilder(Auth::class)

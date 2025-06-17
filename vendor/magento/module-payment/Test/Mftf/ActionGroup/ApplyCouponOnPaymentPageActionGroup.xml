@@ -10,7 +10,7 @@
               xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
     <actionGroup name="ApplyCouponOnPaymentPageActionGroup">
         <annotations>
-            <description>Adds the provided Coupon Code on the Storefront Shopping Cart page. Validates that the Discount Verification Message is present and correct.</description>
+            <description>Adds the provided Coupon Code on the Storefront My Cart page. Validates that the Discount Verification Message is present and correct.</description>
         </annotations>
         <arguments>
             <argument name="couponCode" type="string"/>

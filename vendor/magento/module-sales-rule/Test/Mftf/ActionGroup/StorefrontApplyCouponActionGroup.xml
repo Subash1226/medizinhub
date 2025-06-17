@@ -11,7 +11,7 @@
     <!-- Apply Sales Rule Coupon to the cart -->
     <actionGroup name="StorefrontApplyCouponActionGroup">
         <annotations>
-            <description>Applies the provided Coupon Code to the Storefront Shopping Cart.</description>
+            <description>Applies the provided Coupon Code to the Storefront My Cart.</description>
         </annotations>
         <arguments>
             <argument name="coupon"/>

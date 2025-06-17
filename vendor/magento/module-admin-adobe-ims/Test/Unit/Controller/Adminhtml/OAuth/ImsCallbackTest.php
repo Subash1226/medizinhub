@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2022 Adobe
- * All Rights Reserved.
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 declare(strict_types=1);
 
@@ -230,10 +230,8 @@ class ImsCallbackTest extends TestCase
             ->with('form_key')
             ->willReturnSelf();
         $this->requestMock->expects($this->any())->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
-                ['state'] => 'abc',
-                ['locale'] => 'en'
-            });
+            ->withConsecutive(['state'], ['locale'])
+            ->willReturnOnConsecutiveCalls('abc', 'en');
         $this->authSessionMock->expects($this->any())->method('setIsUrlNotice')
             ->willReturnSelf();
         $this->authSessionMock->expects($this->any())->method('getLocale')
@@ -248,9 +246,7 @@ class ImsCallbackTest extends TestCase
         $this->authMock->expects($this->any())->method('isLoggedIn')->willReturn(false);
         $this->objectManagerMock
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
-                [Locale::class] => $this->localeMock,
-                [\Magento\Backend\Model\Locale\Manager::class] => $this->managerMock
-            });
+            ->withConsecutive([Locale::class], [\Magento\Backend\Model\Locale\Manager::class])
+            ->willReturnOnConsecutiveCalls($this->localeMock, $this->managerMock);
     }
 }

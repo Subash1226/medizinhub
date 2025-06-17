@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2022 Adobe
- * All Rights Reserved.
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 
 declare(strict_types=1);
@@ -76,7 +76,7 @@ class AdminAdobeImsInfoCommand extends Command
                     $output->writeln(self::CLIENT_SECRET_NAME . ' ' . $clientSecret);
                 }
             } else {
-                $output->writeln(sprintf('Module is disabled'));
+                $output->writeln(__('Module is disabled'));
             }
 
             return Cli::RETURN_SUCCESS;

@@ -10,7 +10,7 @@
               xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
     <actionGroup name="AssertStorefrontCartItemExcludingTaxWithWeeeAttributeActionGroup" extends="AssertStorefrontCartItemExcludingTaxActionGroup">
         <annotations>
-            <description>Validates that the provided product price, subtotal, weee attribute value excluding tax are present and correct in the Shopping Cart.</description>
+            <description>Validates that the provided product price, subtotal, weee attribute value excluding tax are present and correct in the My Cart.</description>
         </annotations>
         <arguments>
             <argument name="weeePrice" defaultValue="50" type="string"/>

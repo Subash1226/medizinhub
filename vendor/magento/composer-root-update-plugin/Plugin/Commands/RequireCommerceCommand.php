@@ -52,16 +52,11 @@ class RequireCommerceCommand extends ExtendableRequireCommand
     protected $console;
 
     /**
-     * @var array
-     */
-    protected $repos;
-
-    /**
      * Use the native RequireCommand config with options/doc additions for the root project composer.json update
      *
      * @return void
      */
-    protected function configure(): void
+    protected function configure()
     {
         parent::configure();
 
@@ -154,7 +149,7 @@ $pluginHeader
      *
      * @throws Exception
      */
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->console = new Console($this->getIO(), $input->getOption(self::INTERACTIVE_OPT));
         $console = $this->console;

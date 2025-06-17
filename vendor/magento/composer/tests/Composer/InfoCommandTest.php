@@ -74,7 +74,7 @@ php >=5.4.11
      *
      * @return array
      */
-    public static function getCommandOutputDataProvider()
+    public function getCommandOutputDataProvider()
     {
         return [
             'Package not installed' => [

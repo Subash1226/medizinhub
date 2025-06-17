@@ -10,7 +10,7 @@
               xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
     <actionGroup name="AssertStorefrontCartItemExcludingTaxActionGroup">
         <annotations>
-            <description>Validates that the provided product price and subtotal excluding tax are present and correct in the Shopping Cart.</description>
+            <description>Validates that the provided product price and subtotal excluding tax are present and correct in the My Cart.</description>
         </annotations>
         <arguments>
             <argument name="productName" defaultValue="{{_defaultProduct.name}}" type="string"/>

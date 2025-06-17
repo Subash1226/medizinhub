@@ -69,7 +69,7 @@
         <actionGroup ref="AddToCartFromStorefrontProductPageActionGroup" stepKey="cartAddVirtualProductToCart">
             <argument name="productName" value="$createVirtualProduct.name$"/>
         </actionGroup>
-        <!--  Step 3: Go to Shopping Cart -->
+        <!--  Step 3: Go to My Cart -->
         <actionGroup ref="ClickViewAndEditCartFromMiniCartActionGroup" stepKey="goToShoppingCartFromMinicart"/>
         <!--  Step 4: Open Estimate Shipping and Tax section -->
         <actionGroup ref="AssertStorefrontCheckoutCartEstimateShippingAndTaxAddressActionGroup" stepKey="checkAddress">

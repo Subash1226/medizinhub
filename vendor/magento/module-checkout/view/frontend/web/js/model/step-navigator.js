@@ -116,7 +116,6 @@ define([
          */
         getActiveItemIndex: function () {
             var activeIndex = 0;
-
             steps().sort(this.sortItems).some(function (element, index) {
                 if (element.isVisible()) {
                     activeIndex = index;
@@ -153,9 +152,9 @@ define([
          * @param {*} scrollToElementId
          */
         navigateTo: function (code, scrollToElementId) {
+            $('#checkout').addClass('prescription-step');
             var sortedItems = steps().sort(this.sortItems),
                 bodyElem = $('body');
-
             scrollToElementId = scrollToElementId || null;
 
             if (!this.isProcessed(code)) {
@@ -210,6 +209,11 @@ define([
                 steps()[activeIndex + 1].isVisible(true);
                 this.setHash(code);
                 document.body.scrollTop = document.documentElement.scrollTop = 0;
+                if (activeIndex == 1) {
+                    $('.opc-summary-wrapper').show();
+                } else {
+                    $('.opc-summary-wrapper').hide();
+                }
             }
         }
     };

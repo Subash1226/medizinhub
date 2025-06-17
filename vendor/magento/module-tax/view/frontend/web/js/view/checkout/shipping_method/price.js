@@ -34,7 +34,6 @@ define([
          * @return {*|String}
          */
         getFormattedPrice: function (price) {
-            //todo add format data
             return priceUtils.formatPriceLocale(price, quote.getPriceFormat());
         }
     });

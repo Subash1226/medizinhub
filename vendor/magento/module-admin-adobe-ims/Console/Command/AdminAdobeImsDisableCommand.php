@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright 2022 Adobe
- * All Rights Reserved.
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 
 declare(strict_types=1);
@@ -55,7 +55,7 @@ class AdminAdobeImsDisableCommand extends Command
         try {
             $this->adminImsConfig->disableModule();
             $this->cacheTypeList->cleanType(Config::TYPE_IDENTIFIER);
-            $output->writeln(sprintf('Admin Adobe IMS integration is disabled'));
+            $output->writeln(__('Admin Adobe IMS integration is disabled'));
 
             return Cli::RETURN_SUCCESS;
         } catch (\Exception $e) {
